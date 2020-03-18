@@ -20,12 +20,24 @@ $(document).ready(function(){
                 var movies = data.results;
                 for (var i = 0; i < movies.length; i++) {
                     var movie = movies[i];
+
+                    var title = movie.title;
+                    var originalTitle = movie.original_title;
+                    var language = movie.original_language;
+                    if (movie.vote_average > 0){
+                        var vote = Math.ceil(movie.vote_average / 2);
+                    } else {
+                        var vote = "ND";
+                    }
+
                     var datiFilm = {
-                        titolo: movie.title,
-                        titoloOriginale: movie.original_title,
-                        lingua: movie.original_language,
-                        voto: movie.vote_average
+                        titolo: title,
+                        titoloOriginale: originalTitle,
+                        lingua: language,
+                        voto: vote
                     };
+
+
                     var templateCompilato = templateResults(datiFilm);
                     $(".box-results").append(templateCompilato);
                     $(".hai-cercato").show();
