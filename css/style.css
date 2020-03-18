@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #1d1d1d;
+    color: #fff;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    padding: 20px;
+}
+
+.box-ricerca{
+    margin-bottom: 20px;
+
+}
+
+.box-results div{
+    margin-top: 10px;
+
+}
+
+.blocco-film{
+    border: 1px solid white;
+    padding: 5px;
+}
+
+span{
+    background-color: #fff;
+    color: #1d1d1d;
+    padding: 0 10px;
+    margin-left: 10px;
+}
+
+.hai-cercato{
+    display: none;
+    margin: 10px auto;
+    
+}
