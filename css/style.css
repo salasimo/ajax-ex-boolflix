@@ -44,5 +44,12 @@ span{
 .hai-cercato{
     display: none;
     margin: 10px auto;
-    
+
 }
+
+/* .voto1:after{
+    content: \f005;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+
+} */

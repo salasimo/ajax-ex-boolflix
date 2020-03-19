@@ -26,9 +26,32 @@ $(document).ready(function(){
                     var language = movie.original_language;
                     if (movie.vote_average > 0){
                         var vote = Math.ceil(movie.vote_average / 2);
-                    } else {
-                        var vote = "ND";
-                    }
+                        switch (vote) {
+                            case 1:
+                                vote = '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                                break;
+                            case 2:
+                                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                                break;
+                            case 3:
+                                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                                break;
+                            case 4:
+                                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>';
+                                break;
+                            case 5:
+                                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>';
+                                break;
+                            default:
+                                vote = "ND";
+                                break;
+
+                        };
+
+                    };
+                    
+
+
 
                     var datiFilm = {
                         titolo: title,
@@ -55,10 +78,34 @@ $(document).ready(function(){
         });
     });
 
+    function addStars(vote){
+        switch (vote) {
+            case 1:
+                vote = '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                break;
+            case 2:
+                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                break;
+            case 3:
+                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+                break;
+            case 4:
+                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>';
+                break;
+            case 5:
+                vote = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>';
+                break;
+            default:
+                vote = "ND";
+                break;
+
+        };
+    };
 
 
 
-
+// Quello che accade è che il valore in stelle del primo elemento viene dato anche a tutti gli altri,
+// tranne l'ultimo che rimane vuoto (non analizzato!)
 
 
 
