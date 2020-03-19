@@ -65,12 +65,38 @@ $(document).ready(function() {
 
                     };
 
+                    var classeDaAggiungere = "";
+
+                    if (language == "en"){
+                        language = "GB";
+                    }
+                    if (language == "ja"){
+                        language = "JP";
+                    }
+                    if (language == "da"){
+                        language = "DK";
+                    }
+
+                    if ((language == "cs") ||
+                        (language == "nb") ||
+                        (language == "zh") ||
+                        (language == "sq")){
+                        var flag = "Altra";
+                        classeDaAggiungere = "altra"
+
+
+                    } else {
+                        var flag = '<img src="https://www.countryflags.io/' + language + '/flat/64.png">';
+                    };
+
+
 
                     var datiFilm = {
                         titolo: title,
                         titoloOriginale: originalTitle,
-                        lingua: language,
-                        voto: vote
+                        lingua: flag,
+                        voto: vote,
+                        classLingua: classeDaAggiungere
                     };
 
 

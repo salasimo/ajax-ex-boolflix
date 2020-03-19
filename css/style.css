@@ -39,6 +39,21 @@ span{
     color: #1d1d1d;
     padding: 0 10px;
     margin-left: 10px;
+    position: relative;
+}
+
+span.flag{
+    background-color: #1d1d1d;
+}
+
+span.flag.altra{
+    background-color: #fff;
+}
+
+.flag img{
+    height: 30px;
+    position: absolute;
+    bottom:0px;
 }
 
 .hai-cercato{
