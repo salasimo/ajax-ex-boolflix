@@ -50,6 +50,7 @@ $(document).ready(function() {
                     if (movie.vote_average > 0) {
                         var vote = Math.ceil(movie.vote_average / 2);
                     };
+                    var posterUrl = movie.poster_path
 
                     switch (vote) {
                         case 1:
@@ -97,14 +98,15 @@ $(document).ready(function() {
                         var flag = '<img src="https://www.countryflags.io/' + language + '/flat/64.png">';
                     };
 
-
+                    var posterFullUrl = "https://image.tmdb.org/t/p/" + "w342" + posterUrl;
 
                     var datiFilm = {
                         titolo: title,
                         titoloOriginale: originalTitle,
                         lingua: flag,
                         voto: vote,
-                        classLingua: classeDaAggiungere
+                        classLingua: classeDaAggiungere,
+                        poster: posterFullUrl
                     };
 
 
@@ -143,6 +145,7 @@ $(document).ready(function() {
                     if (movie.vote_average > 0) {
                         var vote = Math.ceil(movie.vote_average / 2);
                     };
+                    var posterUrl = movie.poster_path
 
                     switch (vote) {
                         case 1:
@@ -191,13 +194,15 @@ $(document).ready(function() {
                     };
 
 
-
+                    var posterFullUrl = "https://image.tmdb.org/t/p/" + "w342" + posterUrl;
+                    
                     var datiFilm = {
                         titolo: title,
                         titoloOriginale: originalTitle,
                         lingua: flag,
                         voto: vote,
-                        classLingua: classeDaAggiungere
+                        classLingua: classeDaAggiungere,
+                        poster: posterFullUrl
                     };
 
 
