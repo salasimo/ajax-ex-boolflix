@@ -85,6 +85,9 @@ $(document).ready(function() {
                     if (language == "da"){
                         language = "DK";
                     }
+                    if (language == "el"){
+                        language = "GR";
+                    }
 
                     if ((language == "cs") ||
                         (language == "nb") ||
@@ -180,6 +183,9 @@ $(document).ready(function() {
                     if (language == "da"){
                         language = "DK";
                     }
+                    if (language == "el"){
+                        language = "GR";
+                    }
 
                     if ((language == "cs") ||
                         (language == "nb") ||
@@ -195,7 +201,7 @@ $(document).ready(function() {
 
 
                     var posterFullUrl = "https://image.tmdb.org/t/p/" + "w342" + posterUrl;
-                    
+
                     var datiFilm = {
                         titolo: title,
                         titoloOriginale: originalTitle,
