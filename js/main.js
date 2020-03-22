@@ -85,6 +85,9 @@ $(document).ready(function() {
                     if (language == "da"){
                         language = "DK";
                     }
+                    if (language == "el"){
+                        language = "GR";
+                    }
 
                     if ((language == "cs") ||
                         (language == "nb") ||
@@ -180,6 +183,9 @@ $(document).ready(function() {
                     if (language == "da"){
                         language = "DK";
                     }
+                    if (language == "el"){
+                        language = "GR";
+                    }
 
                     if ((language == "cs") ||
                         (language == "nb") ||
@@ -195,7 +201,7 @@ $(document).ready(function() {
 
 
                     var posterFullUrl = "https://image.tmdb.org/t/p/" + "w342" + posterUrl;
-                    
+
                     var datiFilm = {
                         titolo: title,
                         titoloOriginale: originalTitle,
@@ -215,6 +221,26 @@ $(document).ready(function() {
             },
             error: function(err) {
                 alert("Errore");
+            }
+        });
+    };
+
+    function apiCast(movieId) {
+        $.ajax({
+            url: "https://api.themoviedb.org/3/movie/" + movieId + "/credits",
+            data: {
+                api_key: "29ad81bd33ebd003f5307b9c32a17b2b",
+            },
+            method: "GET",
+            success: function(data) {
+                var castList = data.cast;
+                // getCast(cast);
+                console.log(castList);
+
+            },
+            error: function(err) {
+                alert("Errore ricerca cast");
+
             }
         });
     };

@@ -21,6 +21,8 @@
 
 .box-ricerca{
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -32,6 +34,24 @@
 .blocco-film{
     border: 1px solid white;
     padding: 5px;
+}
+
+input.input-query-box{
+    width: 300px;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+button.search-button{
+    height: 30px;
+    width: 100px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 span{
@@ -61,10 +81,3 @@ span.flag.altra{
     margin: 10px auto;
 
 }
-
-/* .voto1:after{
-    content: \f005;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 600;
-
-} */
