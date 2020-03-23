@@ -6,6 +6,7 @@
         <title>Boolfix</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,400i,600,700,700i,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:700&display=swap" rel="stylesheet">
         <!--jQuery 3.4.1-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Handlebars 4.7.3-->
@@ -14,26 +15,40 @@
 
     </head>
     <body>
-
         <div class="container">
-            <div class="box-ricerca">
-                <input class="input-query-box" placeholder="Cerca un film o una serie TV" type="text">
-                <button class="search-button">Cerca</button>
+            <header>
+                <div class="logo-box">
+                    <h1 class="logo">BOOLFLIX</h1>
+                </div>
+                <div class="box-ricerca hide">
+                    <input class="input-query-box" placeholder="Cerca film e serie TV" type="text">
+                    <button class="search-button"><i class="fas fa-arrow-circle-right"></i></button>
 
-            </div>
-            <div class="hai-cercato">La tua ricerca: <span></span></div>
-            <div class="box-results">
-                <!-- qui template results -->
-            </div>
+                </div>
+            </header>
+            <main>
+                <div class="box-ricerca active">
+                    <input class="input-query-box" placeholder="Cerca film e serie TV" type="text">
+                    <button class="search-button"><i class="fas fa-arrow-circle-right"></i></button>
+
+                </div>
+                <div class="hai-cercato">La tua ricerca: <span></span></div>
+                <div class="box-results">
+                    <!-- qui template results -->
+                </div>
+
+            </main>
         </div>
 
         <script id="results-template" type="text/x-handlebars-template">
-            <div class="blocco-film">
-                <div class="titolo">Titolo: <span>{{titolo}}</span></div>
-                <div class="titolo-originale">Titolo originale: <span>{{titoloOriginale}}</span></div>
-                <div class="lingua">Lingua: <span class="flag {{classLingua}}">{{{lingua}}}</span></div>
-                <div class="voto">Voto: <span>{{{voto}}}</span></div>
-                <div class="poster"><img src="{{poster}}"></div>
+            <div class="card">
+                <img class="poster" src="{{poster}}">
+                <div class="card-details">
+                    <div class="titolo"><span>{{titolo}}</span></div>
+                    <div class="titolo-originale"><span>{{titoloOriginale}}</span></div>
+                    <div class="lingua"><span class="flag {{classLingua}}">{{{lingua}}}</span></div>
+                    <div class="voto"><span>{{{voto}}}</span></div>
+                </div>
 
             </div>
         </script>
@@ -41,3 +56,5 @@
         <script src="js/main.js" charset="utf-8"></script>
     </body>
 </html>
+
+<!--  -->
