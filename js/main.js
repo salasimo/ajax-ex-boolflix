@@ -3,11 +3,14 @@ $(document).ready(function() {
     // Handlebars====================================
     var source = $("#results-template").html();
     var templateResults = Handlebars.compile(source);
+
+    var source2 = $("#cast-template").html();
+    var templateCast = Handlebars.compile(source2);
     //===============================================
 
     // === VARIABILI ===
 
-    var apiBaseUrl = "https://api.themoviedb.org/3/search/";
+    var apiBaseUrl = "https://api.themoviedb.org/3/";
     var apiKey = "29ad81bd33ebd003f5307b9c32a17b2b";
 
     //==================
@@ -35,12 +38,19 @@ $(document).ready(function() {
         $(this).find(".card-details").hide();
     });
 
-    // ===== FUNZIONE CHIAMATA AJAX =====
+    $("body").on("click", ".info-cast", infoCast);
+    $("body").on("click", ".indietro", closeCast);
+    $("body").on("mouseleave", ".cast-details", function(){
+        $(this).removeClass("active").siblings(".card-details").hide().removeClass("hidden");
+        clearCast();
+    });
+
+    // ===== FUNZIONE CHIAMATA AJAX PRINCIPALE =====
 
     function ajaxCall(tipo){
         var chiaveRicerca = $("body .box-ricerca.active .input-query-box").val();
         $.ajax({
-            url: apiBaseUrl + tipo,
+            url: apiBaseUrl + "search/" + tipo,
             data: {
                 api_key: apiKey,
                 language: "it-IT",
@@ -52,32 +62,42 @@ $(document).ready(function() {
                 for (var i = 0; i < risultati.length; i++) {
                     var elemento = risultati[i];
 
-                    var id = elemento.id;
-                    if ( tipo == "movie"){
+
+                    if ( tipo == "movie"){ // film
                         var title = elemento.title; // film
                         var originalTitle = elemento.original_title; // film
+                        var type = "movie";
+
                     } else{
                         var title = elemento.name; // serie TV
                         var originalTitle = elemento.original_name; // serie TV
+                        var type = "tv";
                     }
+                    var id = elemento.id;
                     var flag = languageToFlag(elemento.original_language);
                     var stars = voteToStars(elemento.vote_average);
                     var posterUrl = getPoster(elemento.poster_path);
-
+                    var overview = elemento.overview;
                     var datiShow = {
+                        id: id,
                         titolo: title,
                         titoloOriginale: originalTitle,
                         lingua: flag,
                         voto: stars,
-                        poster: posterUrl
+                        poster: posterUrl,
+                        trama: overview,
+                        tipo: type
                     }
 
                     if (datiShow.titolo == datiShow.titoloOriginale){
                         datiShow = {
+                            id: id,
                             titolo: title,
                             lingua: flag,
                             voto: stars,
-                            poster: posterUrl
+                            poster: posterUrl,
+                            trama: overview,
+                            tipo: type
                         }
                     };
                     if (datiShow.poster.endsWith("null")){
@@ -85,11 +105,8 @@ $(document).ready(function() {
                     };
 
 
-
-
                     var templateCompilato = templateResults(datiShow);
                     $(".box-results").append(templateCompilato);
-
 
                     $(".hai-cercato").show();
                     $(".hai-cercato span").html(chiaveRicerca);
@@ -109,10 +126,69 @@ $(document).ready(function() {
 
     // ===== ALTRE FUNZIONI =====
 
+    // infoCast: ottieni info sul cast
+
+    function infoCast(){
+        $(this).parent(".card-details").addClass("hidden").siblings(".cast-details").addClass("active");
+        var showId = $(this).parent(".card-details").data("id");
+        if ($(this).parent(".card-details").hasClass("movie")){
+            var tipo = "movie"
+        } else{
+            var tipo = "tv"
+        }
+        $.ajax({
+            url: apiBaseUrl + tipo + "/" + showId + "/credits",
+            data: {
+                api_key: apiKey
+            },
+            method: "GET",
+            success: function(data){
+                var cast = data.cast
+                var datiCast = {
+                    attore: []
+                }
+                for (var i = 0; i < 5; i++) {
+                    if (cast[i]) {
+                        var actor = cast[i].name;
+                    } else {
+                        var actor = undefined;
+                    }
+                    datiCast.attore.push(actor);
+                }
+
+                var templateCompilato = templateCast(datiCast);
+                $(".cast-details").append(templateCompilato);
+
+                if (datiCast.attore[0] == undefined){
+                    $(".no-cast").removeClass("hide"); // mostra "nessuna informazione"
+                }
+
+
+            },
+            error: function(err){
+                alert("Errore Cast");
+
+
+            }
+        });
+
+    };
+    // closeCast: chiude le info sul cast
+    function closeCast(){
+        $(this).parent(".cast-details").removeClass("active").siblings(".card-details").removeClass("hidden");
+        clearCast();
+
+    };
+
     // clearResults: pulisce i risultati di ricerca prima di iniziarne una nuova
 
     function clearResults(){
         $(".box-results").html("");
+    };
+    // clearCast: pulisce il cast
+
+    function clearCast(){
+        $(".cast-list").html("");
     };
 
     //  voteToStars: trasforma il voto da decimi a valore in stelle
@@ -167,7 +243,7 @@ $(document).ready(function() {
             (lang == "te") ||
             (lang == "ko") ||
             (lang == "sq")){
-            var flag = "Altra";
+            var flag = "Lingua: " + lang.toUpperCase();
 
         } else {
             var flag = '<img src="https://www.countryflags.io/' + lang + '/flat/64.png">';

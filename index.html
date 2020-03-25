@@ -18,7 +18,7 @@
         <div class="container">
             <header>
                 <div class="logo-box">
-                    <h1 class="logo">BOOLFLIX</h1>
+                    <h1 class="logo"><a href="index.html">BOOLFLIX</a></h1>
                 </div>
                 <div class="box-ricerca hide">
                     <input class="input-query-box" placeholder="Cerca film e serie TV" type="text">
@@ -43,13 +43,31 @@
         <script id="results-template" type="text/x-handlebars-template">
             <div class="card">
                 <img class="poster" src="{{poster}}">
-                <div class="card-details">
-                    <div class="titolo"><span>{{titolo}}</span></div>
+                <div class="card-details {{tipo}}" data-id="{{id}}">
+                    <div class="titolo"><span><strong>{{titolo}}</strong></span></div>
                     <div class="titolo-originale"><span>{{titoloOriginale}}</span></div>
-                    <div class="lingua"><span class="flag {{classLingua}}">{{{lingua}}}</span></div>
+                    <div class="lingua"><span class="flag">{{{lingua}}}</span></div>
                     <div class="voto"><span>{{{voto}}}</span></div>
+                    <div class="trama"><span>{{trama}}</span></div>
+                    <button class="info-cast">Vedi cast</button>
                 </div>
 
+                <div class="cast-details">
+                    <button class="indietro">Indietro</button>
+
+                </div>
+            </div>
+        </script>
+
+        <script id="cast-template" type="text/x-handlebars-template">
+            <div class="cast-list">
+                <p><strong>Cast:</strong></p>
+                <div class="actor-name">{{attore.[0]}}</div>
+                <div class="actor-name">{{attore.[1]}}</div>
+                <div class="actor-name">{{attore.[2]}}</div>
+                <div class="actor-name">{{attore.[3]}}</div>
+                <div class="actor-name">{{attore.[4]}}</div>
+                <div class= "no-cast actor-name hide">nessuna informazione</div>
             </div>
         </script>
 
