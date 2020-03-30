@@ -46,6 +46,11 @@ $(document).ready(function() {
     $(".container").on("mouseleave", ".card", function(){
         $(this).find(".card-details").hide();
     });
+    $(".container").on("click", ".card", function(){
+        $(".card").not(this).find(".card-details").hide().removeClass("hidden");
+        $(".card").not(this).find(".cast-details").removeClass("active");
+        clearCast();    
+    });
 
     $("body").on("click", ".info-cast", infoCast);
     $("body").on("click", ".indietro", closeCast);
@@ -245,15 +250,16 @@ $(document).ready(function() {
         if (lang == "en"){
             lang = "GB";
         }
-        if (lang == "ja"){
+        else if (lang == "ja"){
             lang = "JP";
         }
-        if (lang == "da"){
+        else if (lang == "da"){
             lang = "DK";
         }
-        if (lang == "el"){
+        else if (lang == "el"){
             lang = "GR";
         }
+
         if ((lang == "cs") ||
             (lang == "nb") ||
             (lang == "zh") ||
@@ -261,6 +267,7 @@ $(document).ready(function() {
             (lang == "ta") ||
             (lang == "te") ||
             (lang == "ko") ||
+            (lang == "ur") ||
             (lang == "sq")){
             var flag = "Lingua: " + lang.toUpperCase();
 

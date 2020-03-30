@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.container{
+.container {
     flex-basis: 100vw;
     margin: 0 auto;
     display: flex;
@@ -18,55 +18,54 @@
     padding: 20px;
     padding-top: 100px;
     position: relative;
-
 }
 
-.bg-img{
+.bg-img {
     position: absolute;
     top: 50%;
-    left:0;
+    left: 0;
     width: 100%;
     height: 70%;
     transform: translateY(-50%);
 }
 
-.bg-img.hide{
+.bg-img.hide {
     display: none;
 }
 
-header{
+header {
     height: 70px;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
-    right:0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo{
+.logo {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 700;
     color: #fff;
     padding: 20px;
 }
 
-.logo a{
+.logo a {
     text-decoration: none;
     color: #fff;
     user-select: none;
 }
 
-.about-box{
-    padding-right: 20px;
+.about-box {
+    padding: 0 20px;
 }
-.about-box.hide{
+
+.about-box.hide {
     display: none;
 }
 
-
-.about-box a{
+.about-box a {
     color: white;
     opacity: 80%;
     text-decoration: none;
@@ -74,7 +73,7 @@ header{
     font-size: 14px;
 }
 
-.box-ricerca.hide{
+.box-ricerca.hide {
     display: none;
 }
 
@@ -82,38 +81,37 @@ main {
     position: relative;
 }
 
-header .box-ricerca{
+header .box-ricerca {
     margin-bottom: 0px;
 }
 
-.box-ricerca{
+.box-ricerca {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 25px;
-
 }
 
-.box-results{
+.box-results {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.card{
-    height:300px;
-    width:200px;
+.card {
+    height: 300px;
+    width: 200px;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
     margin: 10px;
 }
 
-.card-details{
-    background-color: rgba(0,0,0,0.75);
+.card-details {
+    background-color: rgba(0, 0, 0, 0.75);
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -123,39 +121,38 @@ header .box-ricerca{
     display: none;
 }
 
-.card-details.hidden{
+.card-details.hidden {
     visibility: hidden;
 }
 
-.cast-details.active{
+.cast-details.active {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.75);
-    z-index:5;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 5;
 }
 
-.cast-details{
+.cast-details {
     padding: 10px;
 }
 
-.actor-name{
+.actor-name {
     font-size: 13px;
     margin-top: 4px;
 }
 
-.actor-name.no-cast.hide{
+.actor-name.no-cast.hide {
     display: none;
 }
 
-button.info-cast, .cast-details.active button.indietro{
+button.info-cast, .cast-details.active button.indietro {
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-
     border: 2px solid white;
     background-color: #ffffff00;
     border-radius: 5px;
@@ -163,10 +160,10 @@ button.info-cast, .cast-details.active button.indietro{
     padding: 4px 16px;
     font-size: 12px;
     font-weight: 600;
-
+    cursor: pointer;
 }
 
-input.input-query-box{
+input.input-query-box {
     width: 300px;
     background-color: #22294390;
     padding: 5px 20px;
@@ -178,7 +175,7 @@ input.input-query-box{
     color: white;
 }
 
-button.search-button{
+button.search-button {
     border: none;
     background-color: #22294300;
     font-size: 20px;
@@ -188,79 +185,72 @@ button.search-button{
     overflow: hidden;
 }
 
-
-span{
+span {
     color: #fff;
 }
 
-span.flag{
+span.flag {}
 
-}
-
-span.flag.altra{
+span.flag.altra {
     background-color: #fff;
 }
 
-.flag img{
+.flag img {
     height: 30px;
     position: relative;
-
 }
 
-.hai-cercato{
+.hai-cercato {
     display: none;
     margin: 10px auto;
     text-align: center;
-
 }
 
-img.poster{
+img.poster {
     width: 200px;
     height: 300px;
     object-fit: cover;
     position: absolute;
-    top:0;
-    left:0;
-
+    top: 0;
+    left: 0;
 }
 
-.trama{
+.trama {
     margin-top: 10px;
     max-height: 130px;
     overflow-y: auto;
 }
 
 .trama::-webkit-scrollbar {
-display: none;
+    display: none;
 }
 
 .trama {
     scrollbar-width: none;
 }
 
-@media screen and (max-width:767px){
-    header{
+@media screen and (max-width:767px) {
+    header {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
     }
 
-    .hai-cercato{
-
+    .hai-cercato {
         margin-top: 30px;
     }
-    .bg-img{
+
+    .bg-img {
         display: none;
     }
 }
 
-
 /* filtro genere ===========*/
-
-#filtro-generi .genere.show{
+#filtro-generi .genere.show {
     display: block;
 }
-#filtro-generi .genere.hide{
+
+#filtro-generi .genere.hide {
     display: none;
 }
 
@@ -268,57 +258,60 @@ display: none;
 ======================= */
 /* Dropdown Button */
 .filtra-btn {
- background-color: #4CAF50;
- color: white;
- padding: 16px;
- font-size: 16px;
- border: none;
- cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
 .filtra-btn:hover, .filtra-btn:focus {
- background-color: #3e8e41;
+    background-color: #3e8e41;
 }
 
 /* The search field */
 #input-filter {
- box-sizing: border-box;
- background-image: url('searchicon.png');
- background-position: 14px 12px;
- background-repeat: no-repeat;
- font-size: 16px;
- padding: 14px 20px 12px 45px;
- border: none;
- border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
 /* The search field when it gets focus/clicked on */
-#input-filter:focus {outline: 3px solid #ddd;}
+#input-filter:focus {
+    outline: 3px solid #ddd;
+}
 
 /* The container <div> - needed to position the dropdown content */
 /* .dropdown {
  position: relative;
  display: inline-block;
 } */
-
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
- display: none;
- position: absolute;
- background-color: #f6f6f6;
- min-width: 230px;
- border: 1px solid #ddd;
- z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
 }
 
 /* Links inside the dropdown */
 #filtro-generi a {
- color: black;
- padding: 12px 16px;
- text-decoration: none;
- display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 /* Change color of dropdown links on hover */
-#filtro-generi a:hover {background-color: #f1f1f1}
+#filtro-generi a:hover {
+    background-color: #f1f1f1
+}
