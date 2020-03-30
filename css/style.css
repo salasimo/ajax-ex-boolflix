@@ -17,7 +17,21 @@
     font-family: "Montserrat", sans-serif;
     padding: 20px;
     padding-top: 100px;
+    position: relative;
 
+}
+
+.bg-img{
+    position: absolute;
+    top: 50%;
+    left:0;
+    width: 100%;
+    height: 70%;
+    transform: translateY(-50%);
+}
+
+.bg-img.hide{
+    display: none;
 }
 
 header{
@@ -42,11 +56,30 @@ header{
     text-decoration: none;
     color: #fff;
     user-select: none;
+}
 
+.about-box{
+    padding-right: 20px;
+}
+.about-box.hide{
+    display: none;
+}
+
+
+.about-box a{
+    color: white;
+    opacity: 80%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
 }
 
 .box-ricerca.hide{
     display: none;
+}
+
+main {
+    position: relative;
 }
 
 header .box-ricerca{
@@ -59,6 +92,7 @@ header .box-ricerca{
     align-items: center;
     justify-content: center;
     margin-left: 25px;
+
 }
 
 .box-results{
@@ -134,7 +168,7 @@ button.info-cast, .cast-details.active button.indietro{
 
 input.input-query-box{
     width: 300px;
-    background-color: #222943;
+    background-color: #22294390;
     padding: 5px 20px;
     border: none;
     border-radius: 20px;
@@ -146,12 +180,14 @@ input.input-query-box{
 
 button.search-button{
     border: none;
-    background-color: #222943;
+    background-color: #22294300;
     font-size: 20px;
     color: white;
     transform: translateX(-35px);
     cursor: pointer;
+    overflow: hidden;
 }
+
 
 span{
     color: #fff;
@@ -202,7 +238,7 @@ display: none;
     scrollbar-width: none;
 }
 
-@media screen and (max-width:655px){
+@media screen and (max-width:767px){
     header{
         flex-direction: column;
         justify-content: space-between;
@@ -213,7 +249,11 @@ display: none;
 
         margin-top: 30px;
     }
+    .bg-img{
+        display: none;
+    }
 }
+
 
 /* filtro genere ===========*/
 

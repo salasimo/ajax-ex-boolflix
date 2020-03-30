@@ -57,6 +57,9 @@ $(document).ready(function() {
     // ===== FUNZIONE CHIAMATA AJAX PRINCIPALE =====
 
     function ajaxCall(tipo){
+        $(".bg-img").addClass("hide");
+        $(".about-box").addClass("hide");
+
         var chiaveRicerca = $("body .box-ricerca.active .input-query-box").val();
         $.ajax({
             url: apiBaseUrl + "search/" + tipo,
