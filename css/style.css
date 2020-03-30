@@ -18,6 +18,7 @@
     padding: 20px;
     padding-top: 100px;
     position: relative;
+
 }
 
 .bg-img {
@@ -29,7 +30,18 @@
     transform: translateY(-50%);
 }
 
+.bg-img-mobile{
+    position: absolute;
+    top: 40%;
+    height: 60%;
+    display:none;
+}
+
 .bg-img.hide {
+    display: none;
+}
+
+.bg-img-mobile.hide{
     display: none;
 }
 
@@ -242,6 +254,17 @@ img.poster {
 
     .bg-img {
         display: none;
+    }
+    .bg-img-mobile {
+        display: block;
+    }
+    .box-ricerca {
+        margin-top:20px;
+        margin-bottom: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 25px;
     }
 }
 

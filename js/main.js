@@ -49,7 +49,7 @@ $(document).ready(function() {
     $(".container").on("click", ".card", function(){
         $(".card").not(this).find(".card-details").hide().removeClass("hidden");
         $(".card").not(this).find(".cast-details").removeClass("active");
-        clearCast();    
+        clearCast();
     });
 
     $("body").on("click", ".info-cast", infoCast);
@@ -63,6 +63,7 @@ $(document).ready(function() {
 
     function ajaxCall(tipo){
         $(".bg-img").addClass("hide");
+        $(".bg-img-mobile").addClass("hide");
         $(".about-box").addClass("hide");
 
         var chiaveRicerca = $("body .box-ricerca.active .input-query-box").val();
