@@ -6,12 +6,19 @@ $(document).ready(function() {
 
     var source2 = $("#cast-template").html();
     var templateCast = Handlebars.compile(source2);
+
+    var source3 = $("#generi-template").html();
+    var templateGeneri = Handlebars.compile(source3);
+
     //===============================================
 
     // === VARIABILI ===
 
     var apiBaseUrl = "https://api.themoviedb.org/3/";
     var apiKey = "29ad81bd33ebd003f5307b9c32a17b2b";
+
+    var tvGenres = [{10759:"Azione e Avventura"},{16:"Animazione"},{35:"Commedia"},{80:"Crimine"},{99:"Documentario"},{18:"Drammatico"},{10751:"Famiglia"},{10762:"Bambini"},{9648:"Mistero"},{10763:"Informazione"},{10764:"Reality"},{10765:"Sci-Fi e Fantasy"},{10766:"Soap"},{10767:"Talk"},{10768:"Guerra e Politica"},{37:"Western"}];
+    var movieGenres = [{28:"Azione"},{12:"Avventura"},{16:"Animazione"},{35:"Commedia"},{80:"Crimine"},{99:"Documentario"},{18:"Drammatico"},{10751:"Famiglia"},{14:"Fantasy"},{36:"Storico"},{27:"Horror"},{10402:"Musicale"},{9648:"Mistero"},{10749:"Romantico"},{878:"Fantascienza"},{10770:"Film TV"},{53:"Thriller"},{10752:"Guerra"},{37:"Western"}];
 
     //==================
 
@@ -30,6 +37,8 @@ $(document).ready(function() {
             ajaxCall("tv");
         }
     });
+
+    $("#input-filter").keyup(filtraRicercaGenere);
 
     $(".container").on("mouseover", ".card", function(){
         $(this).find(".card-details").show();
@@ -74,6 +83,7 @@ $(document).ready(function() {
                         var type = "tv";
                     }
                     var id = elemento.id;
+                    var generiId = elemento.genre_ids;
                     var flag = languageToFlag(elemento.original_language);
                     var stars = voteToStars(elemento.vote_average);
                     var posterUrl = getPoster(elemento.poster_path);
@@ -86,6 +96,7 @@ $(document).ready(function() {
                         voto: stars,
                         poster: posterUrl,
                         trama: overview,
+                        generi: generiId,
                         tipo: type
                     }
 
@@ -97,6 +108,7 @@ $(document).ready(function() {
                             voto: stars,
                             poster: posterUrl,
                             trama: overview,
+                            generi: generiId,
                             tipo: type
                         }
                     };
@@ -107,6 +119,8 @@ $(document).ready(function() {
 
                     var templateCompilato = templateResults(datiShow);
                     $(".box-results").append(templateCompilato);
+                    // generiPresenti();
+
 
                     $(".hai-cercato").show();
                     $(".hai-cercato span").html(chiaveRicerca);
@@ -122,6 +136,8 @@ $(document).ready(function() {
             }
         });
     };
+
+
 
 
     // ===== ALTRE FUNZIONI =====
@@ -262,6 +278,38 @@ $(document).ready(function() {
         return posterUrl;
 
     };
+
+    function filtraRicercaGenere(event){
+        var charFilter = $(this).val().toLowerCase();
+
+        $("#filtro-generi").find(".genere").each(function() {
+            if ($(this).text().toLowerCase().includes(charFilter)) {
+                $(this).addClass("show");
+                $(this).removeClass("hide");
+            } else {
+                $(this).addClass("hide");
+                $(this).removeClass("show");
+            };
+        });
+
+    };
+
+    // function generiPresenti(){
+    //     var arrayGeneriCards = [];
+    //     $(document).find(".card").each(function(){
+    //         var genereAllCode = $(this).data("generi");
+    //         arrayGeneriCards.push(genereAllCode);
+    //         console.log("generi all code" + arrayGeneriCards)
+    //     });
+    //     for (var i = 0; i < tvGenres.length; i++) {
+    //         if (arrayGeneriCards.includes(Object.keys(tvGenres[i]))){
+    //             console.log("generi all code" + arrayGeneriCards)
+    //         } else{
+    //             console.log("generi all code" + arrayGeneriCards)
+    //         }
+    //     }
+    //
+    // };
 
 
 }); // fine document ready ========

@@ -20,6 +20,17 @@
                 <div class="logo-box">
                     <h1 class="logo"><a href="index.html">BOOLFLIX</a></h1>
                 </div>
+                <!-- <div class="box-filtro-generi">
+                    <button class="filtra-btn">Filtra per genere</button>
+                    <div id="filtro-generi">
+                        <input type="text" placeholder="Cerca un genere" id="input-filter">
+                        <div class="lista-generi">
+                            <a class="genere" href="#about">About</a>
+                            <a class="genere" href="#about">Abort</a>
+                            <a class="genere" href="#about">Zurt</a>
+                        </div>
+                    </div>
+                </div> -->
                 <div class="box-ricerca hide">
                     <input class="input-query-box" placeholder="Cerca film e serie TV" type="text">
                     <button class="search-button"><i class="fas fa-arrow-circle-right"></i></button>
@@ -41,7 +52,7 @@
         </div>
 
         <script id="results-template" type="text/x-handlebars-template">
-            <div class="card">
+            <div class="card" data-generi=",{{generi}},">
                 <img class="poster" src="{{poster}}">
                 <div class="card-details {{tipo}}" data-id="{{id}}">
                     <div class="titolo"><span><strong>{{titolo}}</strong></span></div>
@@ -69,6 +80,10 @@
                 <div class="actor-name">{{attore.[4]}}</div>
                 <div class= "no-cast actor-name hide">nessuna informazione</div>
             </div>
+        </script>
+
+        <script id="generi-template" type="text/x-handlebars-template">
+            <a class="genere">{{nomeGenere}}</a>
         </script>
 
         <script src="js/main.js" charset="utf-8"></script>
